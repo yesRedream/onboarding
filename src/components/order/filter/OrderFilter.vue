@@ -3,81 +3,26 @@
     <div class="filter__content">
       <div class="filter__box filter__box--checkbox">
         <p class="filter__title">Show:</p>
-
-        <BaseCheckbox text="All Types" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="New" color="blue" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="In progress" color="blue" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="Proposition sent" color="blue" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="Confirmed" color="blue" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="Completed" color="green" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="Canceled" color="light" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
-        <BaseCheckbox text="Rejected" color="red" class="filter__checkbox">
-          <input
-            type="checkbox"
-            class="filter__checkbox-input"
-            name="filter"
-          >
-        </BaseCheckbox>
-
         
-
+        <BaseCheckbox 
+          v-for="(checkbox, index) in checkboxes" 
+          :key="index" 
+          :text="checkbox.text" 
+          :color="checkbox.color"
+          class="filter__checkbox"
+        >
+          <input
+            type="checkbox"
+            class="filter__checkbox-input"
+            name="filter"
+          >
+        </BaseCheckbox>
       </div>
 
       <div class="filter__box filter__box--dropdown">
         <p class="filter__title">Loading Date:</p>
         <button class="filter__toggle">This week</button>
-
       </div>
-
     </div>
     
   </div>
@@ -90,6 +35,20 @@
     name: 'OrderFilter',
     components: {
       BaseCheckbox
+    },
+    data: function () {
+      return {
+        checkboxes: [
+          { color: '', text: 'All Types' },
+          { color: 'blue', text: 'New' },
+          { color: 'blue', text: 'In progress' },
+          { color: 'blue', text: 'Proposition sent' },
+          { color: 'blue', text: 'Confirmed' },
+          { color: 'green', text: 'Completed' },
+          { color: 'light', text: 'Canceled' },
+          { color: 'red', text: 'Rejected' },
+        ]
+      }
     }
   }
 
